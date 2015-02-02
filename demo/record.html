@@ -6,7 +6,10 @@
 <title>录音测试</title>
 <meta name="description" content="">
 <meta name="keywords" content="">
-<link href="" rel="stylesheet">
+<script src="scripts/swfobject.js"></script>
+<script src="scripts/recorder.js"></script>
+<script src="scripts/wav-record.js"></script>
+<script src="../src/web-siri.js"></script>
 <style>
 	body {
 		background: #000;
@@ -14,8 +17,37 @@
 </style>
 </head>
 <body>
+
+	<div class="record-container">
+		<button class="record_button" onclick="FWRecorder.record('audio', 'audio.wav');" title="Record">
+        <img src="images/record.png" alt="Record"/>
+    </button>
+    <button class="stop_recording_button" onclick="FWRecorder.stopRecording('audio');" title="Stop Recording">
+      <img src="images/stop.png" alt="Stop Recording"/>
+    </button>
+    <button class="play_button" onclick="FWRecorder.playBack('audio');" title="Play">
+        <img src="images/play.png" alt="Play"/>
+    </button>
+    <button class="pause_playing_button" onclick="FWRecorder.pausePlayBack('audio');" title="Pause Playing">
+        <img src="images/pause.png" alt="Pause Playing"/>
+    </button>
+    <button class="stop_playing_button" onclick="FWRecorder.stopPlayBack();" title="Stop Playing">
+      <img src="images/stop.png" alt="Stop Playing"/>
+    </button>
+
+    <span id="save_button">
+        <span id="flashcontent">
+          <p>Your browser must have JavaScript enabled and the Adobe Flash Player installed.</p>
+        </span>
+      </span>
+
+      <form id="upload_form" name="uploadForm" action="upload.php">
+      <input name="authenticity_token" value="xxxxx" type="hidden">
+      <input name="upload_file[parent_id]" value="1" type="hidden">
+      <input name="format" value="json" type="hidden">
+    </form>
+	</div>
     
-    <script src="../src/web-siri.js"></script>
     <script>
     Siri = new jSiri()
     </script>
