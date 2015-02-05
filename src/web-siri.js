@@ -32,7 +32,7 @@
     var phase = 0
     var run = false
 
-    var ALPHA = 0.8
+    var ALPHA = 0.65
 
     var opt = extend({}, defaults, options)
 
@@ -119,15 +119,13 @@
 
     // 更新数据
     this.updateData = function(value) {
-      if (value > 0) {
-        self.noise(value)
-        self.frequence(value)
-      }
+      self.noise(value)
+      self.frequence(value)
     }
 
     // 获取/设置振幅
     this.noise = function(value) {
-      if(value) {
+      if(typeof value !== 'undefined') {
         opt.noise = ALPHA * opt.noise + (1 - ALPHA) * (value / 100)
       } else {
         return opt.noise
@@ -136,7 +134,7 @@
 
     // 获取/设置波频
     this.frequence = function(value) {
-      if(value) {
+      if(typeof value !== 'undefined') {
         opt.frequence = 2 + (value/100) * 3
       } else {
         return opt.frequence
@@ -145,7 +143,7 @@
 
     // 获取/设置速度
     this.speed = function(value) {
-      if(value) {
+      if(typeof value !== 'undefined') {
         opt.spped = value
       } else {
         return opt.speed
