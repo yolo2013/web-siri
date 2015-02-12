@@ -3,7 +3,8 @@
  * @author: xuhua@iflytek.com
  */
 (function() {
-
+  'use strict'
+  
   var siri = new jSiri();
 
   var appWidth = 24;
